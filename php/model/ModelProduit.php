@@ -4,14 +4,14 @@ require_once 'Model.php';
 
 class ModelProduit {
    
-  private $id;
+  private $idProduit;
   private $nom;
   private $image;
   private $prix;
       
   // un getter
   public function getId(){
-  	return $this->id;
+  	return $this->idProduit;
   }
 
 
@@ -74,7 +74,7 @@ public static function getAllProduits(){
       Model::$pdo->exec($sql);
   }
   
-  public static function getVoitureByImmat($id) {
+  public static function getProduitById($id) {
     $sql = "SELECT * from Produit WHERE idProduit=:nom_tag";
     // Préparation de la requête
     $req_prep = Model::$pdo->prepare($sql);
