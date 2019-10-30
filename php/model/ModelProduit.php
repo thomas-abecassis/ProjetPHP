@@ -70,7 +70,8 @@ public static function getAllProduits(){
   }*/
   
   public function save(){
-      $sql="INSERT INTO Produit  VALUES ( '$this->nom' , '$this->image' , '$this->prix' )";
+      echo $this->nom ." " . $this->prix. "  " . $this->image;
+      $sql="INSERT INTO Produit(nom,prix,image) VALUES ( '$this->nom'  , '$this->prix' , '$this->image')";
       Model::$pdo->exec($sql);
   }
   

@@ -24,13 +24,13 @@ class ControllerProduit {
     }
 
     public static function created(){
-    	$id=$_GET['id'];
     	$image=$_GET['image'];
-    	$prix=$_GET['prix'];
- 		$v=new ModelVoiture($id,$image,$prix);
+    	$prix=(int)$_GET['prix'];
+        $nom=$_GET['nom'];
+ 		$v=new ModelProduit($nom,$image,$prix,0);
  		$v->save();
-        $controller='produit'; $view='created'; $pagetitle='cree';     //appel au modèle pour gerer la BD
-        $tab_v = ModelProduit::getAllProduit();
+        $controller='produit'; $view='list'; $pagetitle='cree';     //appel au modèle pour gerer la BD
+        $tab_v = ModelProduit::getAllProduits();
         require '../view/view.php';  
     }
 }
