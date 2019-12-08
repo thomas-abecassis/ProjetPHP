@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Liste des voitures</title>
-    </head>
-    <body>
+
     		<?php
-    			echo $v->getNom();
-    			echo $v->getPrix();
-    			echo $v->getImage();
+    			echo htmlspecialchars($v->getId());
+    			echo "<br>";
+    			echo htmlspecialchars($v->getNom());
+    			echo "<br>";
+    			echo htmlspecialchars($v->getPrix());
+                echo "€";
+   				echo "<br>";
+    			echo '<br>';
+    			echo '<a href=index.php?action=delete&id='.htmlspecialchars($v->getId()).'>supprimer le produit</a>';
+    			echo "<br>";
+    			echo '<a href=index.php?action=update&id='.htmlspecialchars($v->getId()).'>mettre à jour le produit </a>';
+                echo "<br>";
+                echo "<a href=index.php?action=panier&id=".htmlspecialchars($v->getId())."> ajouter panier </a>";
 			?>
-    </body>
-</html>
+

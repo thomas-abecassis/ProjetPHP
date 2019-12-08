@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title> Mon premier php </title>
-    </head>
-   
-    <body>
-      <form method="get" action="routeur.php?action=created">
+
+      <form method="get" action="index.php?action=created">
         <fieldset>
           <legend>Mon formulaire :</legend>
           <p>
-            <label for="nom">nom</label> :
-            <input type="text" placeholder="Ex : bleu" name="nom" id="nom" required/>
+            <label for="immat_id">Immatriculation</label> :
+            <input type="text" placeholder="Ex : 256AB34" name="immatriculation" id="immat_id" required/>
           </p>
 
           <p>
-            <label for="image">image</label> :
-            <input type="text" placeholder="Ex : Renault" name="image" id="image" required/>
+            <label for="couleur_id">couleur</label> :
+            <input type="text" placeholder="Ex : bleu" name="couleur" id="couleur_id" required/>
           </p>
+
           <p>
-            <label for="prix">prix</label> :
-            <input type="number" placeholder="prix" name="prix" id="prix" required/>
+            <label for="marque_id">marque</label> :
+            <input type="text" placeholder="Ex : Renault" name="marque" id="marque_id" required/>
           </p>
           <input type='hidden' name='action' value='created'>
 
@@ -29,6 +23,5 @@
           </p>
         </fieldset> 
       </form>
-    </body>
-</html> 
+
 

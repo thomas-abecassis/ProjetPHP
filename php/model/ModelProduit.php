@@ -1,100 +1,116 @@
 <?php
 
-require_once 'Model.php';
+require_once File::build_path('model/Model.php');
 
-class ModelProduit {
+class Modelproduit extends Model{
    
-  private $idProduit;
+  private $id;
   private $nom;
-  private $image;
   private $prix;
+  protected static $object = "produit";
+  protected static $primary='id';
+
       
-  // un getter
-  public function getId(){
-  	return $this->idProduit;
-  }
-
-
-  public function getNom() {
-       return $this->nom;  
+  // un getter      
+  public function getid() {
+       return $this->id;  
   }
      
   // un setter 
-  public function setNom($nom) {
-       $this->nom = $nom;
+  public function setid($id2) {
+       $this->id = $id2;
   }
 
-  public function getImage(){
-    return $this->image;
+  public function getnom(){
+    return $this->nom;
   }
 
-  public function setImage($image){
-    $this->image=$image;
+  public function setnom($nom){
+    $this->nom=$nom;
   }
 
-  public function getPrix(){
+  public function getprix(){
     return $this->prix;
   }
 
-  public function setPrix($prix){
-    if($prix>0){
+  public function setprix($prix){
+    if(strlen($prix)==8){
     $this->prix=$prix; 
     }
     else{
       echo"oupsi"; 
     }
   }
+
+  public function getTab(){
+    $data=array(
+      "id"=>$this->id,
+     "nom"=>$this->nom,
+      "prix"=>$this->prix
+    );
+    return $data;
+  }
       
-public function __construct($n = NULL, $i = NULL, $p = NULL, $id = NULL) {
-  if (!is_null($n) && !is_null($i) && !is_null($p) && !is_null($id)) {
+public function __construct($m = NULL, $c = NULL, $i = NULL) {
+  if (!is_null($m) && !is_null($c) && !is_null($i)) {
     // Si aucun de $m, $c et $i sont nuls,
     // c'est forcement qu'on les a fournis
     // donc on retombe sur le constructeur à 3 arguments
-    $this->id=$id;
-    $this->nom = $n;
-    $this->image = $i;
-    $this->prix = $p;
+    $this->id = $m;
+    $this->nom = $c;
+    $this->prix = $i;
   }
 }
 
-public static function getAllProduits(){
-  $rep=Model::$pdo->query('select * from Produit');
-  return $rep->fetchAll(PDO::FETCH_CLASS, 'ModelProduit');
+public static function getAllproduits(){
+  $rep=Model::$pdo->query('select * from produit');
+  return $rep->fetchAll(PDO::FETCH_CLASS, 'Modelproduit');
 }
 
 
            
   /* une methode d'affichage.
   public function afficher() {
-    echo "Voiture $this->immatriculation de marque $this->marque (couleur $this->couleur)";
+    echo "produit $this->prix de id $this->id (nom $this->nom)";
   }*/
   
-  public function save(){
-      echo $this->nom ." " . $this->prix. "  " . $this->image;
-      $sql="INSERT INTO Produit(nom,prix,image) VALUES ( '$this->nom'  , '$this->prix' , '$this->image')";
-      Model::$pdo->exec($sql);
-  }
   
-  public static function getProduitById($id) {
-    $sql = "SELECT * from Produit WHERE idProduit=:nom_tag";
+  public static function getproduitByImmat($immat) {
+    $sql = "SELECT * from produit WHERE prix=:nom_tag";
     // Préparation de la requête
     $req_prep = Model::$pdo->prepare($sql);
 
     $values = array(
-        "nom_tag" => $id,
+        "nom_tag" => $immat,
         //nomdutag => valeur, ...
     );
     // On donne les valeurs et on exécute la requête	 
     $req_prep->execute($values);
 
     // On récupère les résultats comme précédemment
-    $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelProduit');
+    $req_prep->setFetchMode(PDO::FETCH_CLASS, 'produit');
     $tab_voit = $req_prep->fetchAll();
     // Attention, si il n'y a pas de résultats, on renvoie false
     if (empty($tab_voit))
         return false;
     return $tab_voit[0];
-}
+  }
+
+  public static function deleteproduitByImmat($immat) {
+    $sql = "DELETE from produit WHERE prix=:nom_tag";
+    // Préparation de la requête
+    $req_prep = Model::$pdo->prepare($sql);
+
+    $values = array(
+        "nom_tag" => $immat,
+        //nomdutag => valeur, ...
+    );
+    // On donne les valeurs et on exécute la requête   
+    $req_prep->execute($values);
+
+  }
+
+
 
 }
 ?>
