@@ -13,13 +13,13 @@
         <fieldset>
           <legend>Mon formulaire :</legend>
           <p>
-            <label for="immat_id">Id</label> :
+            <label for="immat_id">Email</label> :
             <?php
             if($isUpdate){
-            echo ("<input value= \"" . $v->getLogin()."\" type=\"text\" placeholder=\"Ex : 256AB34\" name=\"login\" id=\"immat_id\" required readonly />");
+            echo ("<input type=\"email\" value= \"" . $v->getLogin()."\" type=\"text\" placeholder=\"Ex : 256AB34\" name=\"login\" id=\"immat_id\" required readonly />");
             }
             else{
-              echo ("<input value= \"" . $v->getLogin()."\" type=\"text\" placeholder=\"Ex : 256AB34\" name=\"login\" id=\"immat_id\" required  />");
+              echo ("<input type=\"email\" value= \"" . $v->getLogin()."\" type=\"text\" placeholder=\"Ex : 256AB34\" name=\"login\" id=\"immat_id\" required  />");
             }
           
             ?>
@@ -49,7 +49,17 @@
             <?php 
             echo "<input value= \"" . $v->getMdp() . "\" type=\"password\" placeholder=\"azerty123\"  id=\"prenom_id\" required/>"
             ?>
-          </p><?php
+          </p>
+          <?php
+          if(Session::is_admin()){
+
+            echo("<p>
+              <input type=\"checkbox\" id=\"id_admin\" name=\"admin\" value=\"1\">
+            <label for=\"id_admin\">admin ?</label>
+            </p>  ");
+          }
+          ?>
+          <?php
           echo "<input type='hidden' name='controller' value='utilisateur'>";
           if($isUpdate){
             echo "<input type='hidden' name='action' value='updated'>";

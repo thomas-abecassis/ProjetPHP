@@ -82,8 +82,6 @@ class Model{
 	  	$sql=rtrim($sql,', ');
 	  	$sql=$sql.')';
 
-    echo $sql;
-
 	    // Préparation de la requête
 	    $req_prep = Model::$pdo->prepare($sql);
 
