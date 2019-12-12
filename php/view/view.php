@@ -31,6 +31,16 @@
                 ?>
     		
     	</nav>
+<div class="container">
+<div class="row">
+<?php 
+$filepath = File::build_path("view/".static::$object.'/'.$view.".php");
+
+require $filepath;
+?>
+</div>
+</div>
+
 <?php
 
 if(isset($_SESSION["panier"])){
@@ -47,15 +57,7 @@ if(isset($_SESSION["panier"])){
 
 
 ?>
-<div class="container">
-<div class="row">
-<?php 
-$filepath = File::build_path("view/".static::$object.'/'.$view.".php");
 
-require $filepath;
-?>
-</div>
-</div>
 
 <footer>
 <!-- Footer social -->
