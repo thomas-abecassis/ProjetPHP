@@ -51,7 +51,9 @@ if(isset($_SESSION["panier"])){
         $prix+=$value->getPrix();
     }
     echo strval($prix)."€";
-    echo '<a href=index.php?controller=commande&action=commander&id='.htmlspecialchars($v->getId()).'>commander</a>';
+    if(isset($_SESSION["login"])){
+      echo '<a href=index.php?controller=commande&action=created>commander</a>';
+    }
     echo "<br>-----------------------panier--------------------<br>";
 }
 

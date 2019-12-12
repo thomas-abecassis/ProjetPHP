@@ -1,7 +1,7 @@
 <?php
 require_once File::build_path('controller/ControllerProduit.php');
 require_once File::build_path('controller/ControllerUtilisateur.php');
-
+require_once File::build_path('controller/ControllerCommande.php');
 
  function myGet($nomvar){
  	if(isset($_GET[$nomvar])){
