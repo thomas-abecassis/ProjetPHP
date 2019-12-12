@@ -63,11 +63,22 @@ footer a {
 }
 
 /*Produit*/
+.centrer{
+	margin-left: 20%;
+	}
+.boite{
+	 width: 350px;
+	 height: 350px;
+	background-color: grey;
+}
 .produit{
-	 width: 300px;
-	 height: 300px;
+	border-radius: 20px;
+	 width: 290px;
+	 height: 290px;
 	 background-color: grey;
-	 margin: 10px;
+	 background-repeat: no-repeat;
+	 background-size: cover;
+	/* margin: 10px;*/
 
 }
 .baleine{
