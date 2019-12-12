@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title><?php echo $pagetitle; ?></title>
-    </head>
-    <body>
-    	<nav style= "width:100%; background-color:grey; color : white">
-    		<ol>
-        		<li ><a href="index.php?action=readAll">liste des voitures</a></li>
-        		<li ><a href=" index.php?action=readAll&controller=utilisateur">liste des utilisateurs</a></li>
-        		<li><a href="index.php?action=readAll&controller=trajet">acceuil</a></li>
+<head>
+   
+  <meta charset="utf-8">
+  <title><?php echo $pagetitle; ?></title>
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <!-- Social media Font -->
+  <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?9ukd8d">
+</head>
+
+<body class=" grey lighten-3">
+<header>
+	 <nav   id="menu" class="nav-wraper">
+  
+        
+        <img href="#index.html" id="logo" src="https://www.logolynx.com/images/logolynx/0a/0a541bcbcef40a7c1058c0d02db88762.png"alt="Le logo.">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+    		
+        		<li><a href="index.php?action=readAll&controller=trajet">Acceuil</a></li>
+                <li ><a href="index.php?action=readAll">Produits</a></li>
+        		<li ><a href=" index.php?action=readAll&controller=utilisateur">Utilisateurs</a></li>
+        		
                 <?php 
                 if(isset($_SESSION["login"])){
-                    echo ("<li><a href=\"index.php?action=disconnect&controller=utilisateur\">deconnexion</a></li>");
+                    echo ("<li><a href=\"index.php?action=disconnect&controller=utilisateur\">Deconnexion</a></li>");
                 }else{
-                   echo ("<li><a href=\"index.php?action=connect&controller=utilisateur\">connexion</a></li>"); 
+                   echo ("<li><a href=\"index.php?action=connect&controller=utilisateur\">Connexion</a></li>"); 
                 }
                 ?>
-    		</ol>
+    		
     	</nav>
 <?php
 
@@ -33,13 +45,41 @@ if(isset($_SESSION["panier"])){
     echo "<br>-----------------------panier--------------------<br>";
 }
 
-// Si $controleur='voiture' et $view='list',
-// alors $filepath="/chemin_du_site/view/voiture/list.php"
+
+?>
+
+<div class="row">
+<?php 
 $filepath = File::build_path("view/".static::$object.'/'.$view.".php");
 
 require $filepath;
 ?>
-<footer style="border: 2px solid grey;text-align:right;">Ceci est un footer incroyable</footer>
+</div>
+
+<footer>
+<!-- Footer social -->
+  <section class="ft-social">
+    <ul class="ft-social-list">
+      <li><a href="#" class="pure-button button-socicon"><span class="socicon socicon-facebook grey-text text-darken-1"></span></a></li>
+      <li><a href="#" class="pure-button button-socicon"><span class="socicon socicon-twitter grey-text text-darken-1"></span></a></li>
+      <li><a href="#" class="pure-button button-socicon"><span class="socicon socicon-linkedin grey-text text-darken-1"></span></a></li>
+      <li><a href="#" class="pure-button button-socicon"><span class="socicon socicon-instagram grey-text text-darken-1"></span></a></li>
+    </ul>
+  </section>
+
+  <!-- Footer legal -->
+  <section class="ft-legal">
+    <ul class="ft-legal-list">
+      <li><a href="#">Termes &amp; Conditions</a></li>
+      <li><a href="#">Mentions légales &amp; CGU</a></li>
+      <li><a href="#">Données personnelles</a></li>
+      <li>&copy; 2019 Copyright Sofuto Inc.</li>
+    </ul>
+  </section>
+
+</footer>
     </body>
+
+
 </html>
 
