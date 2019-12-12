@@ -41,6 +41,7 @@ if(isset($_SESSION["panier"])){
         $prix+=$value->getPrix();
     }
     echo strval($prix)."€";
+    echo '<a href=index.php?controller=commande&action=commander&id='.htmlspecialchars($v->getId()).'>commander</a>';
     echo "<br>-----------------------panier--------------------<br>";
 }
 

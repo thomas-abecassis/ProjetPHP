@@ -2,11 +2,18 @@
 
     $controller=static::$object;
 
-    if($isUpdate){
-      echo "<form method=\"get\" action=\"index.php\">";
+    if(Conf::getDebug()){
+      echo("<form method=\"get\" ");
     }
     else{
-      echo "<form method=\"get\" action=\"index.php\">";
+      echo("<form method=\"post\" ");
+    }
+
+    if($isUpdate){
+      echo  ("action=\"index.php\">");
+    }
+    else{
+      echo ("action=\"index.php\">");
     }
     ?>
 
