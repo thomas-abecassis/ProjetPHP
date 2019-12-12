@@ -88,11 +88,26 @@ footer a {
     
 }
 .bouton{
+	border-radius: 20px;
+	margin-left: 45px;
 	position:absolute;
 	 background-color: white;
+	color: black;
 	
 	z-index:2;
-	font-size:200%}
+	font-size:150%;
+	  padding: 5px;
+
+
+	}
+.prix{
+	height: 60px;
+	z-index:2;
+}
+.espace{
+	height: 230px;
+	z-index:2;
+}
 
 .produit{
 	border-radius: 20px;

@@ -5,10 +5,11 @@
         			<p class="centrer">Produit ' . htmlspecialchars($v->getnom()) . ' </p>
         			<a href=index.php?action=Read&id='.rawurlencode($v->getId()).'>
         				<img class="produit" src="../image/'.htmlspecialchars($v->getId()).'.jpg">
+        				<div class="espace"></div>
         				<div class="bouton">Plus dinformations </div>
         			</a>
-        			<br>
-        			Prix : '.htmlspecialchars($v->getprix()).' € 
+        			<div class="prix"></div>
+        				<p>Prix : '.htmlspecialchars($v->getprix()).' € </p>
         		  </div>';       
 
 
