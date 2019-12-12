@@ -1,4 +1,10 @@
-body {position: relative;}
+html,body {
+	height: 100%;
+	}
+
+#contenu{
+	min-height: 80%;
+}
 
 #logo {
     width: 70px;
@@ -6,9 +12,7 @@ body {position: relative;}
     position: absolute;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+.pad1 {
   margin: 0;
   padding: 0;
 }
@@ -20,8 +24,10 @@ footer {
   background-color: #000;
   color: #bbb;
   line-height: 1.5;
-  position: absolute;
-   bottom: 0;
+   bottom: 0px;
+   left:0px;
+   padding-top: 20px;
+
 }
 footer a {
   text-decoration: none;

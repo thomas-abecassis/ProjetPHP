@@ -7,7 +7,8 @@
         				<img class="produit" src="../image/'.htmlspecialchars($v->getId()).'.jpg">
         				<div class="bouton">Plus dinformations </div>
         			</a>
-        			<br> Prix : '.htmlspecialchars($v->getprix()).' € 
+        			<br>
+        			Prix : '.htmlspecialchars($v->getprix()).' € 
         		  </div>';       
 
 
