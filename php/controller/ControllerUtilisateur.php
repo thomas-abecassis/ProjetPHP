@@ -14,11 +14,11 @@ class ControllerUtilisateur {
     public static function Read(){
     	$v=ModelUtilisateur::select($_GET['id']);
     	if($v==false){
-        $controller='utilisateur'; $view='error'; $pagetitle='erreur';     //appel au modèle pour gerer la BD
-        require File::build_path('view/view.php');  //"redirige" vers la vue
+            $controller='utilisateur'; $view='error'; $pagetitle='erreur';     //appel au modèle pour gerer la BD
+            require File::build_path('view/view.php');  //"redirige" vers la vue
     	}else{      
-        $controller='utilisateur'; $view='details'; $pagetitle='les d\'etails';     //appel au modèle pour gerer la BD
-        require File::build_path('view/view.php');  //"redirige" vers la vue
+            $controller='utilisateur'; $view='details'; $pagetitle='les d\'etails';     //appel au modèle pour gerer la BD
+            require File::build_path('view/view.php');  //"redirige" vers la vue
 	    }
     }
 
@@ -30,10 +30,10 @@ class ControllerUtilisateur {
     }
 
     public static function created(){
-    	$login=$_GET['login'];
-    	$nom=$_GET['nom'];
-    	$prenom=$_GET['prenom'];
-        $mdp=$_GET['mdp'];
+    	$login=myGet('login');
+    	$nom=myGet('nom');
+    	$prenom=myGet('prenom');
+        $mdp=myGet('mdp');
         if(!filter_var($login, FILTER_VALIDATE_EMAIL)){
             $v=new ModelUtilisateur("","","","","","");
             $isUpdate=false;
@@ -52,7 +52,7 @@ class ControllerUtilisateur {
     }
 
     public static function delete(){
-        $login=$_GET['id'];
+        $login=myGet('id');
         if(Session::is_user($login) || Session::is_admin()){
             Modelutilisateur::delete($login);
             $tab_v=Modelutilisateur::selectAll();
@@ -67,7 +67,7 @@ class ControllerUtilisateur {
     }
 
     public static function update(){
-        $id=$_GET["id"];
+        $id=myGet("id");
 
         if(Session::is_user($id) || Session::is_admin()){
             $v=ModelUtilisateur::select($id);
@@ -83,17 +83,17 @@ class ControllerUtilisateur {
 
 
     public static function updated(){
-        if(Session::is_user($_GET['login']) || Session::is_admin()){
+        if(Session::is_user(myGet('login')) || Session::is_admin()){
             $admin=0;
-            if(isset($_GET["admin"]) && Session::is_admin()){
+            if(!is_null(myGet("admin")) && Session::is_admin()){
                 $admin=1;
             }
             $controller='utilisateur'; $view='updated'; $pagetitle='mise à jour de utilisateur';     //appel au modèle pour gerer la BD
             $data=array(
-            "login"=>$_GET['login'],
-            "nom"=>$_GET['nom'],
-            "prenom"=>$_GET['prenom'],
-            "mdp"=>Security::chiffrer($_GET['mdp']),
+            "login"=>myGet('login'),
+            "nom"=>myGet('nom'),
+            "prenom"=>myGet('prenom'),
+            "mdp"=>Security::chiffrer(myGet('mdp')),
             "admin"=>$admin
             );
             ModelUtilisateur::update($data);
@@ -118,10 +118,10 @@ class ControllerUtilisateur {
     }
 
     static function connected(){
-        if(ModelUtilisateur::checkPassword($_GET["login"],$_GET["mdp"])){
-            $v = ModelUtilisateur::select($_GET["login"]);
+        if(ModelUtilisateur::checkPassword(myGet("login"),myGet("mdp"))){
+            $v = ModelUtilisateur::select(myGet("login"));
             if(is_null($v->getNonce())){
-                $_SESSION["login"] = $_GET["login"];
+                $_SESSION["login"] = myGet("login");
                 $_SESSION["admin"] = true;
             }
             $controller='utilisateur'; $view='details'; $pagetitle='Liste des utilisateur';     //appel au modèle pour gerer la BD
@@ -141,7 +141,7 @@ class ControllerUtilisateur {
     }
 
     static function validate(){
-        $u=ModelUtilisateur::select($_GET["login"]);
+        $u=ModelUtilisateur::select(myGet("login"));
         if($u!=false){
             $u->setNonce();
             ModelUtilisateur::update($u->getTab());

@@ -11,7 +11,7 @@ class ControllerProduit {
     }
 
     public static function Read(){
-    	$v=ModelProduit::select($_GET['id']);
+    	$v=ModelProduit::select(myGet('id'));
     	if($v==false){
         $controller='produit'; $view='error'; $pagetitle='erreur';     //appel au modèle pour gerer la BD
         require File::build_path('view/view.php');  //"redirige" vers la vue
@@ -29,9 +29,9 @@ class ControllerProduit {
     }
 
     public static function created(){
-    	$id=$_GET['id'];
-    	$nom=$_GET['nom'];
-    	$prix=$_GET['prix'];
+    	$id=myGet('id');
+    	$nom=myGet('nom');
+    	$prix=myGet('prix');
  		$v=new ModelProduit($id,$nom,$prix);
  		$v->save();
         $controller='produit'; $view='created'; $pagetitle='cree';     //appel au modèle pour gerer la BD
@@ -40,7 +40,7 @@ class ControllerProduit {
     }
 
     public static function delete(){
-        $id=$_GET['id'];
+        $id=myGet('id');
         ModelProduit::delete($id);
         $tab_v=ModelProduit::selectAll();
         $controller='produit'; $view='deleted'; $pagetitle='supprimé';     //appel au modèle pour gerer la BD
@@ -48,7 +48,7 @@ class ControllerProduit {
     }
 
     public static function update(){
-        $im=$_GET['id'];
+        $im=myGet('id');
         $v=ModelProduit::select($im);
         $isUpdate=true;
         $controller='produit'; $view='update'; $pagetitle='mise à jour de produit';     //appel au modèle pour gerer la BD
@@ -59,9 +59,9 @@ class ControllerProduit {
     public static function updated(){
         $controller='produit'; $view='updated'; $pagetitle='mise à jour de produit';     //appel au modèle pour gerer la BD
         $data=array(
-            "id"=>$_GET["id"],
-            "nom"=>$_GET["nom"],
-            "prix"=>$_GET["prix"]
+            "id"=>myGet("id"),
+            "nom"=>myGet("nom"),
+            "prix"=>myGet("prix")
         );
         ModelProduit::update($data);
         $tab_v = ModelProduit::selectAll();
@@ -73,7 +73,7 @@ class ControllerProduit {
             $_SESSION["panier"]=array();
         }
 
-        $produit= ModelProduit::select($_GET['id']);
+        $produit= ModelProduit::select(myGet('id'));
 
         array_push($_SESSION["panier"],$produit);
 
