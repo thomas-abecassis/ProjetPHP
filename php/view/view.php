@@ -48,22 +48,24 @@
             ?>
             </div>
         </div>
-
-<?php
-if(isset($_SESSION["panier"])){
-    echo "<br>-----------------------panier--------------------<br>";
-    $prix=0;
-    foreach ($_SESSION["panier"] as $value) {
-        echo $value->getNom()."<br>";
-        $prix+=$value->getPrix();
-    }
-    echo strval($prix)."€";
-    if(isset($_SESSION["login"])){
-      echo '<a href=index.php?controller=commande&action=created>commander</a>';
-    }
-    echo "<br>-----------------------panier--------------------<br>";
-}
-?>
+        <div class="container panier">
+          
+            <?php
+            if(isset($_SESSION["panier"])){
+                echo "<center>Panier</center>";
+                $prix=0;
+                foreach ($_SESSION["panier"] as $value) {
+                    echo $value->getNom()."<br>";
+                    $prix+=$value->getPrix();
+                }
+                echo "<center>Total : " .strval($prix)."€ </center>";
+                if(isset($_SESSION["login"])){
+                  echo '<a href=index.php?controller=commande&action=created>commander</a>';
+                }
+            }
+            ?>
+          
+         </div>
 
 
     </div>
