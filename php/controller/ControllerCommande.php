@@ -5,9 +5,9 @@ class ControllerCommande {
     protected static $object="commande";
 
     public static function created(){
-        if(isset($_SESSION["login"])){  
+        if(isset($_SESSION["loginthsa"])){  
             if(isset($_SESSION["panier"])){
-            	$login=$_SESSION["login"]; 
+            	$login=$_SESSION["loginthsa"]; 
             	$date=date("Y-m-d H:i:s");
             	$prix=0;
             	$panier=$_SESSION["panier"];
@@ -44,7 +44,7 @@ class ControllerCommande {
     }
 
     public static function readAll(){
-        $login=$_SESSION["login"];
+        $login=$_SESSION["loginthsa"];
 
         $tabCommande=ModelCommande::getCommandesByLogin($login);
 

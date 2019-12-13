@@ -22,25 +22,25 @@
                 		<li><a href="index.php?action=readAll&controller=produit">Acceuil</a></li>
                         <li ><a href="index.php?action=readAll">Produits</a></li>
                                                 <?php 
-                        if(isset($_SESSION["login"])){
+                        if(isset($_SESSION["loginthsa"])){
                           if(Session::is_admin()){
                             echo "<li><a href=\" index.php?action=readAll&controller=utilisateur\">Utilisateurs</a></li>";
                           }else{
-                          echo "<li><a href=index.php?action=Read&controller=utilisateur&id=".$_SESSION["login"].">Mon compte</a></li>";
+                          echo "<li><a href=index.php?action=Read&controller=utilisateur&id=".$_SESSION["loginthsa"].">Mon compte</a></li>";
                           }
                 		    
                         }
                         ?>
                 		    
                         <?php 
-                        if(isset($_SESSION["login"])){
+                        if(isset($_SESSION["loginthsa"])){
                             echo ("<li><a href=\"index.php?action=disconnect&controller=utilisateur\">Deconnexion</a></li>");
                         }else{
                            echo ("<li><a href=\"index.php?action=connect&controller=utilisateur\">Connexion</a></li>"); 
                         }
                         ?>
                                                 <?php 
-                        if(isset($_SESSION["login"])){
+                        if(isset($_SESSION["loginthsa"])){
                             echo ("<li><a href=\"index.php?action=readAll&controller=commande\">Mes Commandes</a></li>");
                         }
                         ?>
@@ -68,7 +68,7 @@
                     $prix+=$value->getPrix();
                 }
                 echo "<center>Total : " .strval($prix)."€ </center>";
-                if(isset($_SESSION["login"])){
+                if(isset($_SESSION["loginthsa"])){
                   echo '<a href=index.php?controller=commande&action=created>commander</a>';
                 }
             }

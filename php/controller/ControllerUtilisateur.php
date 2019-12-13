@@ -123,8 +123,8 @@ class ControllerUtilisateur {
         if(ModelUtilisateur::checkPassword(myGet("login"),myGet("mdp"))){
             $v = ModelUtilisateur::select(myGet("login"));
             if(is_null($v->getNonce())){
-                $_SESSION["login"] = myGet("login");
-                $_SESSION["admin"] = $v->getAdmin();
+                $_SESSION["loginthsa"] = myGet("login");
+                $_SESSION["adminthsa"] = $v->getAdmin();
             }
             $controller='utilisateur'; $view='details'; $pagetitle='Liste des utilisateur';     //appel au modèle pour gerer la BD
             require File::build_path('view/view.php');  //"redirige" vers la vue
@@ -137,8 +137,8 @@ class ControllerUtilisateur {
     static function disconnect(){
         session_unset();
         session_destroy();
-        $tab_v = ModelUtilisateur::selectAll();
-        $controller='utilisateur'; $view='list'; $pagetitle='Liste des utilisateur';     //appel au modèle pour gerer la BD
+        $_SESSION['admin']=0;
+        $controller='utilisateur'; $view='connect'; $pagetitle='Liste des utilisateur';     //appel au modèle pour gerer la BD
         require File::build_path('view/view.php');  //"redirige" vers la vue
     }
 

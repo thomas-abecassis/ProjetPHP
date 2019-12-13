@@ -1,11 +1,11 @@
 <?php
 class Session {
     public static function is_user($login) {
-        return (!empty($_SESSION['login']) && ($_SESSION['login'] == $login));
+        return (!empty($_SESSION['loginthsa']) && ($_SESSION['loginthsa'] == $login));
     }
 
     public static function is_admin() {
-    return (!empty($_SESSION['admin']) && $_SESSION['admin']);
+    return (!empty($_SESSION["adminthsa"]) && $_SESSION["adminthsa"]);
 	}
 }
 ?>
