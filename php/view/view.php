@@ -22,12 +22,12 @@
                 		<li><a href="index.php?action=readAll&controller=produit">Acceuil</a></li>
                         <li ><a href="index.php?action=readAll">Produits</a></li>
 
-                		<li ><a href=" index.php?action=readAll&controller=utilisateur">Utilisateurs</a></li>
                                          
                                                 <?php 
                         if(isset($_SESSION["loginthsa"])){
                           if(Session::is_admin()){
                             echo "<li><a href=\" index.php?action=readAll&controller=utilisateur\">Utilisateurs</a></li>";
+                            echo "<li><a href=\" index.php?action=create&controller=produit\">ajouter produit</a></li>";
                           }else{
                           echo "<li><a href=index.php?action=Read&controller=utilisateur&id=".$_SESSION["loginthsa"].">Mon compte</a></li>";
                           }
