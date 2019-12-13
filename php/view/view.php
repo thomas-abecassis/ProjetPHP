@@ -30,6 +30,11 @@
                            echo ("<li><a href=\"index.php?action=connect&controller=utilisateur\">Connexion</a></li>"); 
                         }
                         ?>
+                                                <?php 
+                        if(isset($_SESSION["login"])){
+                            echo ("<li><a href=\"index.php?action=readAll&controller=commande\">Mes Commandes</a></li>");
+                        }
+                        ?>
             		
             	</nav>
 
