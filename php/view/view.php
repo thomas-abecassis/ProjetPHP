@@ -50,7 +50,7 @@
                 echo "<center>Panier</center>";
                 $prix=0;
                 foreach ($_SESSION["panier"] as $value) {
-                    echo $value->getNom()."<br>";
+                    echo "<center>".$value->getNom()."</center>";
                     $prix+=$value->getPrix();
                 }
                 echo "<center>Total : " .strval($prix)."€ </center>";
