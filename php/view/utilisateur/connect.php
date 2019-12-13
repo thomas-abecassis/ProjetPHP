@@ -12,7 +12,7 @@
           </p>
           <p>
             <label for="mdp_id">Mot de passe</label> :
-            <input value= "" type="text" placeholder="Ex : 256AB34" name="mdp" id="mdp_id" required />
+            <input value= "" type="password" placeholder="Ex : 256AB34" name="mdp" id="mdp_id" required />
           </p>
           <p>
             <input type="submit" value="Envoyer" />

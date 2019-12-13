@@ -38,6 +38,10 @@ public function getMdp(){
   return $this->mdp;
 }
 
+public function getAdmin(){
+  return $this->admin==1;
+}
+
 public function getNonce(){
   return $this->nonce;
 }

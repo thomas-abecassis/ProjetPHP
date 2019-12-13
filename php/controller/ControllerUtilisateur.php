@@ -6,9 +6,11 @@ class ControllerUtilisateur {
     protected static $object="utilisateur";
 
     public static function readAll() {
+        if(Session::is_admin()){
         $tab_v = ModelUtilisateur::selectAll();
         $controller='utilisateur'; $view='list'; $pagetitle='Liste des utilisateur';     //appel au modèle pour gerer la BD
         require File::build_path('view/view.php');  //"redirige" vers la vue
+        }
     }
 
     public static function Read(){
@@ -122,7 +124,7 @@ class ControllerUtilisateur {
             $v = ModelUtilisateur::select(myGet("login"));
             if(is_null($v->getNonce())){
                 $_SESSION["login"] = myGet("login");
-                $_SESSION["admin"] = true;
+                $_SESSION["admin"] = $v->getAdmin();
             }
             $controller='utilisateur'; $view='details'; $pagetitle='Liste des utilisateur';     //appel au modèle pour gerer la BD
             require File::build_path('view/view.php');  //"redirige" vers la vue

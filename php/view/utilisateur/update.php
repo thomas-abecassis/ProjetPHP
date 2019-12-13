@@ -48,20 +48,14 @@
           <p>
             <label for="mdp_id">Mot de passe</label> :
             <?php 
-            echo "<input value= \"" . $v->getMdp() . "\" type=\"password\" placeholder=\"azerty123\" name=\"mdp\" id=\"mdp_id\" required/>"
-            ?>
-          </p>
-          <p>
-            <label for="mdp_id">confirmez votre mot de passe</label> :
-            <?php 
-            echo "<input value= \"" . $v->getMdp() . "\" type=\"password\" placeholder=\"azerty123\"  id=\"prenom_id\" required/>"
+            echo "<input type=\"password\" placeholder=\"azerty123\" name=\"mdp\" id=\"mdp_id\" required/>"
             ?>
           </p>
           <?php
-          if(Session::is_admin()){
+          if(Session::is_admin() && $isUpdate){
 
             echo("<p>
-              <input type=\"checkbox\" id=\"id_admin\" name=\"admin\" value=\"1\">
+              <input type=\"checkbox\" id=\"id_admin\" name=\"admin\" value=\"1\" style=\"opacity:100\">
             <label for=\"id_admin\">admin ?</label>
             </p>  ");
           }
