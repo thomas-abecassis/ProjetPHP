@@ -21,7 +21,7 @@ class ControllerProduit {
 	    }
     }
 
-    public static function create(){
+    public static function create(){    
         $v=new ModelProduit("","","");
         $isUpdate=false;
     	$controller='produit'; $view='update'; $pagetitle='creation de produit';     //appel au modèle pour gerer la BD
